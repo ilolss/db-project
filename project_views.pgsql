@@ -32,7 +32,7 @@ select * from project_views.goods_view;
 drop view if exists project_views.points_view;
 
 create or replace view project_views.points_view as
-    select address as "Адрес ПВЗ", worktime as "Рабочее время", phone_number as "Номер телефона", 
+    select address as "Адрес ПВЗ", worktime as "Рабочее время", ('+7' || phone_number) as "Номер телефона", 
     rating as "Рейтинг", point_id as "ID ПВЗ"
     from project.points;
 ;

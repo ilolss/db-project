@@ -52,7 +52,7 @@ create table if not exists project.clients (
 CREATE TABLE if not exists project.orders (
     client_id INTEGER NOT NULL,
     point_id INTEGER NOT NULL,
-    order_id SERIAL PRIMARY KEY,
+    order_id SERIAL,
     good_name varchar(50) NOT NULL,
     price decimal(12, 2) NOT NULL CHECK (price > 0),
     valid_from_dttm TIMESTAMP,

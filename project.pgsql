@@ -28,7 +28,7 @@ create table if not exists project.quarantine (
     good_id INTEGER PRIMARY KEY,
     reason TEXT NOT NULL,
     valid_from_dttm TIMESTAMP NOT NULL,
-    valid_to_dttm TIMESTAMP NOT NULL,
+    valid_to_dttm TIMESTAMP,
     FOREIGN KEY (good_id) REFERENCES project.goods(good_id)
 );
 
@@ -55,8 +55,8 @@ CREATE TABLE if not exists project.orders (
     order_id SERIAL PRIMARY KEY,
     good_name varchar(50) NOT NULL,
     price decimal(12, 2) NOT NULL CHECK (price > 0),
-    valid_from_dttm TIMESTAMP NOT NULL,
-    valid_to_dttm TIMESTAMP NOT NULL,
+    valid_from_dttm TIMESTAMP,
+    valid_to_dttm TIMESTAMP,
     amount INTEGER NOT NULL CHECK (amount > 0),
     PRIMARY KEY (order_id, good_name),
     FOREIGN KEY (client_id) REFERENCES project.clients(client_id)

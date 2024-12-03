@@ -1,3 +1,5 @@
+create EXTENSION if not exists pgcrypto;
+
 create schema if not exists project;
 
 create table if not exists project.sellers (
@@ -50,7 +52,7 @@ create table if not exists project.clients (
 CREATE TABLE if not exists project.orders (
     client_id INTEGER NOT NULL,
     point_id INTEGER NOT NULL,
-    order_id INTEGER NOT NULL,
+    order_id SERIAL PRIMARY KEY,
     good_name varchar(50) NOT NULL,
     price decimal(12, 2) NOT NULL CHECK (price > 0),
     valid_from_dttm TIMESTAMP NOT NULL,
@@ -66,7 +68,7 @@ CREATE TABLE if not exists project.orders (
 );
 
 CREATE TABLE IF NOT EXISTS project.employees (
-    employee_id INTEGER PRIMARY KEY,
+    employee_id serial PRIMARY KEY,
     first_name VARCHAR(31) NOT NULL,
     last_name VARCHAR(31) NOT NULL,
     age INTEGER NOT NULL,

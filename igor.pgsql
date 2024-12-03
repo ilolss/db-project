@@ -16,7 +16,7 @@ VALUES
 ('Игорь Бердов', '9339876543', 'пароль4', 5),
 ('Яне Придумал', '9447654321', 'пароль5', 4);
 
-INSERT INTO project.goods (seller_id, name, description, price, count, rating, valid_from_dttm, valid_to_dttm)
+INSERT INTO project.goods (seller_id, name, description, price, amount, rating, valid_from_dttm, valid_to_dttm)
 VALUES
 (
     (SELECT seller_id FROM project.sellers WHERE name = 'Артемий Афоничев'),

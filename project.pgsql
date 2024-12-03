@@ -18,7 +18,7 @@ create table if not exists project.goods (
     name varchar(50) not null,
     description text,
     price decimal(12, 2) not null check(price > 0),
-    count integer,
+    amount integer,
     rating integer not null check(rating >= 1 and rating <= 5),
     valid_from_dttm timestamp not null,
     valid_to_dttm timestamp

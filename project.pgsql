@@ -2,7 +2,7 @@ create EXTENSION if not exists pgcrypto;
 
 create schema if not exists project;
 
-drop table if exists project.sellers;
+drop table if exists project.sellers cascade;
 
 create table if not exists project.sellers (
     seller_id serial PRIMARY KEY,
@@ -12,7 +12,7 @@ create table if not exists project.sellers (
     rating integer check(rating >= 1 and rating <= 5) DEFAULT null
 );
 
-drop table if exists project.goods;
+drop table if exists project.goods cascade;
 
 create table if not exists project.goods (
     good_id serial PRIMARY KEY,
@@ -28,7 +28,7 @@ create table if not exists project.goods (
     valid_to_dttm timestamp
 );
 
-drop table if exists project.quarantine;
+drop table if exists project.quarantine cascade;
 
 create table if not exists project.quarantine (
     good_id INTEGER PRIMARY KEY,
@@ -37,10 +37,10 @@ create table if not exists project.quarantine (
     valid_to_dttm TIMESTAMP,
     FOREIGN KEY (good_id) REFERENCES project.goods(good_id)
     on delete cascade
-    on update cascade,
+    on update cascade
 );
 
-drop table if exists project.points;
+drop table if exists project.points cascade;
 
 CREATE TABLE if not exists project.points (
     point_id SERIAL NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE if not exists project.points (
     PRIMARY KEY (point_id)
 );
 
-drop table if exists project.clients;
+drop table if exists project.clients cascade;
 
 create table if not exists project.clients (
     client_id SERIAL PRIMARY KEY,
@@ -62,7 +62,7 @@ create table if not exists project.clients (
     password BYTEA NOT NULL
 );
 
-drop table if exists project.orders;
+drop table if exists project.orders cascade;
 
 CREATE TABLE if not exists project.orders (
     client_id INTEGER NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE if not exists project.orders (
     on update cascade
 );
 
-drop table if exists project.employees;
+drop table if exists project.employees cascade;
 
 CREATE TABLE IF NOT EXISTS project.employees (
     employee_id serial PRIMARY KEY,
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS project.employees (
     salary DECIMAL(12, 2) NOT NULL
 );
 
-drop table if exists project.points_employees;
+drop table if exists project.points_employees cascade;
 
 CREATE TABLE if not exists project.points_employees (
     point_id INTEGER NOT NULL,
@@ -102,13 +102,13 @@ CREATE TABLE if not exists project.points_employees (
     PRIMARY KEY (point_id, employee_id),
     FOREIGN KEY (point_id) REFERENCES project.points(point_id)
     on delete cascade
-    on update cascade,,
+    on update cascade,
     FOREIGN KEY (employee_id) REFERENCES project.employees(employee_id)
     on delete cascade
-    on update cascade,
+    on update cascade
 );
 
-drop table if exists project.orders_goods;
+drop table if exists project.orders_goods cascade;
 
 CREATE TABLE if not exists project.orders_goods (
     order_id INTEGER NOT NULL,
@@ -117,8 +117,8 @@ CREATE TABLE if not exists project.orders_goods (
     PRIMARY KEY (order_id, good_id, good_name),
     FOREIGN KEY (order_id, good_name) REFERENCES project.orders(order_id, good_name)
     on delete cascade
-    on update cascade,,
+    on update cascade,
     FOREIGN KEY (good_id) REFERENCES project.goods(good_id)
     on delete cascade
-    on update cascade,
+    on update cascade
 );

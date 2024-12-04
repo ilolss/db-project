@@ -106,8 +106,8 @@ create or replace view project_views.popular_products as
     on G.good_id = OG.good_id
     left join project.orders as O
     on OG.order_id = O.order_id and OG.good_name = O.good_name
-group by "ID товара", "Название товара"
-order by "Количество заказов с этим товаром" desc;
+    group by "ID товара", "Название товара"
+    order by "Количество заказов с этим товаром" desc;
 
 select * from project_views.popular_products;
 
@@ -126,10 +126,11 @@ create or replace view project_views.unprofitable_points as
     from project.points as P
     left join project.points_employees as PE on P.point_id = PE.point_id
     left join project.employees as E on PE.employee_id = E.employee_id
-group by "ID ПВЗ", "Адрес", "Рейтинг", "Время открытия", "Время закрытия", "Номер телефона"
-order by "Рейтинг" asc;
+    group by "ID ПВЗ", "Адрес", "Рейтинг", "Время открытия", "Время закрытия", "Номер телефона"
+    having P.rating <= 3 and sum(e.salary) >= 30000
+    order by "Рейтинг" asc;
 
 select * from project_views.unprofitable_points;
 
--- 3
+-- История покупок клиента
 

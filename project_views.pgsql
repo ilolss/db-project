@@ -88,3 +88,25 @@ create or replace view project_views.employees_view as
 ;
 
 select * from project_views.employees_view;
+
+
+
+-- task 8 — cоздать 3 сложных представления
+-- Статистика по самым популярным товарам
+create or replace view project_views.popular_products as
+select G.good_id, G.name as product_name, count(OG.good_id) as order_count, sum(O.amount) as total_amount
+from project.goods as G
+left join project.orders_goods as OG
+on G.good_id = OG.good_id
+left join project.orders as O
+on OG.order_id = O.order_id and OG.good_name = O.good_name
+group by G.good_id, G.name
+order by order_count desc;
+
+select * from project_views.popular_products;
+
+-- 2
+
+
+-- 3
+

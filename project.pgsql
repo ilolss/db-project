@@ -36,6 +36,8 @@ create table if not exists project.quarantine (
     valid_from_dttm TIMESTAMP NOT NULL,
     valid_to_dttm TIMESTAMP,
     FOREIGN KEY (good_id) REFERENCES project.goods(good_id)
+    on delete cascade
+    on update cascade,
 );
 
 drop table if exists project.points;
@@ -98,8 +100,12 @@ CREATE TABLE if not exists project.points_employees (
     point_id INTEGER NOT NULL,
     employee_id INTEGER NOT NULL,
     PRIMARY KEY (point_id, employee_id),
-    FOREIGN KEY (point_id) REFERENCES project.points(point_id),
+    FOREIGN KEY (point_id) REFERENCES project.points(point_id)
+    on delete cascade
+    on update cascade,,
     FOREIGN KEY (employee_id) REFERENCES project.employees(employee_id)
+    on delete cascade
+    on update cascade,
 );
 
 drop table if exists project.orders_goods;
@@ -109,6 +115,10 @@ CREATE TABLE if not exists project.orders_goods (
     good_id INTEGER NOT NULL,
     good_name varchar(50) NOT NULL,
     PRIMARY KEY (order_id, good_id, good_name),
-    FOREIGN KEY (order_id, good_name) REFERENCES project.orders(order_id, good_name),
+    FOREIGN KEY (order_id, good_name) REFERENCES project.orders(order_id, good_name)
+    on delete cascade
+    on update cascade,,
     FOREIGN KEY (good_id) REFERENCES project.goods(good_id)
+    on delete cascade
+    on update cascade,
 );

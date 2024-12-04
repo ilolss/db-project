@@ -121,11 +121,13 @@ create or replace view project_views.unprofitable_points as
         P.rating as "Рейтинг",
         P.worktime_from as "Время открытия",
         P.worktime_to as "Время закрытия",
-        P.phone_number as "Номер телефона",
+        ('+7******' || substring(P.phone_number from 7 for 4)) as "Номер телефона",
         sum(e.salary) as "Сумма зарплат сотрудников"
     from project.points as P
-    left join project.points_employees as PE on P.point_id = PE.point_id
-    left join project.employees as E on PE.employee_id = E.employee_id
+    left join project.points_employees as PE
+    on P.point_id = PE.point_id
+    left join project.employees as E
+    on PE.employee_id = E.employee_id
     group by "ID ПВЗ", "Адрес", "Рейтинг", "Время открытия", "Время закрытия", "Номер телефона"
     having P.rating <= 3 and sum(e.salary) >= 30000
     order by "Рейтинг" asc;
@@ -133,4 +135,30 @@ create or replace view project_views.unprofitable_points as
 select * from project_views.unprofitable_points;
 
 -- История покупок клиента
+drop view if exists project_views.client_summary;
 
+create or replace view project_views.client_summary as
+    select 
+        C.client_id as "ID клиента",
+        C.first_name as "Имя",
+        C.last_name as "Фамилия",
+        ('+7******' || substring(C.phone_number from 7 for 4)) as "Номер телефона",
+        (
+            select OG.good_name
+            from project.orders_goods as OG
+            join project.orders as O2
+            on OG.order_id = O2.order_id
+            where O2.client_id = C.client_id
+            group by OG.good_name
+            order by count(*) desc
+            limit 1
+        ) as "Любимый товар",
+        sum(O.price * O.amount) as "Всего потрачено",
+        max(O.valid_from_dttm) as "Дата последнего заказа"
+    from project.clients as C
+    left join project.orders as O
+    on C.client_id = O.client_id
+    group by "ID клиента", "Имя", "Фамилия", "Номер телефона"
+    order by "ID клиента";
+
+select * from project_views.client_summary;

@@ -22,8 +22,17 @@ select * from project_views.quarantine_view;
 drop view if exists project_views.goods_view;
 
 create or replace view project_views.goods_view as
-    select name as "Название товара", description as "Описание товара", price as "Цена", amount as "Количество в наличии", 
-    rating as "Рейтинг", good_id as "ID товара", seller_id as "ID продавца" 
+    select name as "Название товара", 
+    CASE
+    WHEN description is null THEN 'Описания товара еще нет'
+    ELSE description
+    END as "Описание товара", 
+    price as "Цена", amount as "Количество в наличии", 
+    CASE 
+        WHEN rating is null THEN 'Рейтинга еще нет'
+        ELSE cast(rating as varchar(1))
+    END as "Рейтинг",
+    good_id as "ID товара", seller_id as "ID продавца" 
     from project.goods;
 ;
 
@@ -32,8 +41,12 @@ select * from project_views.goods_view;
 drop view if exists project_views.points_view;
 
 create or replace view project_views.points_view as
-    select address as "Адрес ПВЗ", worktime as "Рабочее время", ('+7' || phone_number) as "Номер телефона", 
-    rating as "Рейтинг", point_id as "ID ПВЗ"
+    select address as "Адрес ПВЗ", ('С ' || worktime_from || ' до ' || worktime_to) as "Рабочее время", ('+7' || phone_number) as "Номер телефона", 
+    CASE 
+        WHEN rating is null THEN 'Рейтинга еще нет'
+        ELSE cast(rating as varchar(1))
+    END as "Рейтинг", 
+    point_id as "ID ПВЗ"
     from project.points;
 ;
 
@@ -52,7 +65,11 @@ select * from project_views.clients_view;
 drop view if exists project_views.sellers_view;
 
 create or replace view project_views.sellers_view as
-    select name as "Название продавца", rating as "Рейтинг", 
+    select name as "Название продавца", 
+    CASE 
+        WHEN rating is null THEN 'Рейтинга еще нет'
+        ELSE cast(rating as varchar(1))(rating as varchar(1))
+    END as "Рейтинг", 
     ('+7******' || substring(phone_number from 7 for 4)) as "Номер телефона", 
     seller_id as "ID продавца" 
     from project.sellers;

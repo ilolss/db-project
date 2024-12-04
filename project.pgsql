@@ -9,7 +9,7 @@ create table if not exists project.sellers (
     name varchar(50) not null,
     phone_number varchar(10) not null,
     password bytea not null,
-    rating integer not null check(rating >= 1 and rating <= 5)
+    rating integer check(rating >= 1 and rating <= 5) DEFAULT null
 );
 
 drop table if exists project.goods;
@@ -22,8 +22,8 @@ create table if not exists project.goods (
     name varchar(50) not null,
     description text,
     price decimal(12, 2) not null check(price > 0),
-    amount integer,
-    rating integer not null check(rating >= 1 and rating <= 5),
+    amount integer not null DEFAULT 0,
+    rating integer check(rating >= 1 and rating <= 5) DEFAULT null,
     valid_from_dttm timestamp not null,
     valid_to_dttm timestamp
 );
@@ -43,8 +43,9 @@ drop table if exists project.points;
 CREATE TABLE if not exists project.points (
     point_id SERIAL NOT NULL,
     address TEXT NOT NULL,
-    rating INTEGER NOT NULL CHECK (rating >= 0 and rating <= 5),
-    worktime TEXT,
+    rating INTEGER CHECK (rating >= 0 and rating <= 5) DEFAULT null,
+    worktime_from TIME DEFAULT '10:00:00',
+    worktime_to TIME DEFAULT '21:00:00',
     phone_number VARCHAR(10) NOT NULL,
     PRIMARY KEY (point_id)
 );
@@ -69,7 +70,7 @@ CREATE TABLE if not exists project.orders (
     price decimal(12, 2) NOT NULL CHECK (price > 0),
     valid_from_dttm TIMESTAMP,
     valid_to_dttm TIMESTAMP,
-    amount INTEGER NOT NULL CHECK (amount > 0),
+    amount INTEGER NOT NULL CHECK (amount > 0) DEFAULT 1,
     PRIMARY KEY (order_id, good_name),
     FOREIGN KEY (client_id) REFERENCES project.clients(client_id)
     on delete RESTRICT

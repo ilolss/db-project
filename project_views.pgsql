@@ -134,7 +134,7 @@ create or replace view project_views.unprofitable_points as
 
 select * from project_views.unprofitable_points;
 
--- История покупок клиента
+-- Статистика клиента
 drop view if exists project_views.client_summary;
 
 create or replace view project_views.client_summary as

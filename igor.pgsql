@@ -79,6 +79,77 @@ INSERT INTO project.points (address, rating, worktime_from, worktime_to, phone_n
 ('ул. Советская, д. 5', 2, '10:00:00', '18:00:00', '9608889955'),
 ('пр. Комсомольский, д. 27', NULL, '09:00:00', '22:00:00', '9502223377');
 
+INSERT INTO project.clients (first_name, last_name, phone_number, password) VALUES
+('Иван', 'Петров', '8905123456', crypt('1234abcd5678ef90', gen_salt('bf'))::bytea),
+('Мария', 'Иванова', '8916123456', crypt('xa1b2c3d4e5f67890', gen_salt('bf'))::bytea),
+('Прилипп', 'Подождет', '8956123456', crypt('1011121314151617', gen_salt('bf'))::bytea),
+('Алексей', 'Смирнов', '8926123456', crypt('4567bcde89f01234', gen_salt('bf'))::bytea),
+('Екатерина', 'Кузнецова', '8936123456', crypt('ffee112233445566', gen_salt('bf'))::bytea),
+('Артем', 'Афафаф', '8956123456', crypt('1011121314151617', gen_salt('bf'))::bytea),
+('Дмитрий', 'Михайлов', '8946123456', crypt('9a8b7c6d5e4f3d21', gen_salt('bf'))::bytea),
+('Игрь', 'Берцов', '8956123456', crypt('1011121314151617', gen_salt('bf'))::bytea),
+('Юрий', 'Попов', '8966123456', crypt('20a1b2c3d4e5f678', gen_salt('bf'))::bytea),
+('Андрей', 'Чернов', '8976123456', crypt('11c9d8e7f6b50431', gen_salt('bf'))::bytea),
+('Наталья', 'Морозова', '8986123456', crypt('93b4a7c8d9f01124', gen_salt('bf'))::bytea),
+('Ольга', 'Соколова', '8956123456', crypt('1011121314151617', gen_salt('bf'))::bytea),
+('Сергей', 'Фролов', '8996123456', crypt('6768e1a2b3c4d5e6', gen_salt('bf'))::bytea),
+('Виктория', 'Николаева', '8906223456', crypt('9abcf6de0d415e70', gen_salt('bf'))::bytea),
+('Егор', 'Романов', '8916223456', crypt('abcd1234def56789', gen_salt('bf'))::bytea),
+('Анастасия', 'Васильева', '8926223456', crypt('13457890ab9c0de1', gen_salt('bf'))::bytea),
+('Ольга', 'Зайка', '8956123456', crypt('1011121314151617', gen_salt('bf'))::bytea),
+('Максим', 'Лебедев', '8936223456', crypt('23456789abcd1234', gen_salt('bf'))::bytea),
+('Владимир', 'Григорьев', '8946223456', crypt('90a1b2c3d4e5f678', gen_salt('bf'))::bytea),
+('Марина', 'Калинина', '8956223456', crypt('77ff112233445566', gen_salt('bf'))::bytea),
+('Константин', 'Жуков', '8966223456', crypt('223344aabbee9900', gen_salt('bf'))::bytea),
+('Далин', 'Долгий', '8956123456', crypt('1011121314151617', gen_salt('bf'))::bytea),
+('София', 'Козлова', '8976223456', crypt('55aabbccddeeff00', gen_salt('bf'))::bytea),
+('Артем', 'Орлов', '8986223456', crypt('1112131415f67890', gen_salt('bf'))::bytea);
+
+INSERT INTO project.goods (seller_id, name, description, price, amount, valid_from_dttm) VALUES
+(1, 'Смартфон Samsung Galaxy S23', 'Смартфон с экраном 6.1 дюйма, камера 50 Мп', 64999.99, 10, '2024-01-01 00:00:00'),
+(2, 'Ноутбук ASUS ZenBook 14', 'Ноутбук с процессором Intel i7, 16 ГБ оперативной памяти', 85999.00, 5, '2024-02-01 00:00:00'),
+(3, 'Наушники Sony WH-1000XM5', 'Беспроводные наушники с активным шумоподавлением', 24999.50, 20, '2024-03-01 00:00:00'),
+(4, 'Телевизор LG OLED55C1', '55-дюймовый OLED телевизор с разрешением 4K', 159999.00, 8, '2024-04-01 00:00:00'),
+(5, 'Робот-пылесос Xiaomi Mi Robot Vacuum', 'Умный робот-пылесос с поддержкой управления через приложение', 14999.99, 12, '2024-05-01 00:00:00'),
+(6, 'Микроволновая печь Samsung MS23K3513AS', 'Микроволновка с инверторным нагревом и 23 литра объема', 8999.00, 15, '2024-06-01 00:00:00'),
+(7, 'Планшет Apple iPad Pro 11', 'Планшет с процессором M1 и экраном 11 дюймов', 79999.00, 6, '2024-07-01 00:00:00'),
+(8, 'Смарт-часы Garmin Forerunner 945', 'Часы с GPS, мониторингом здоровья и спорта', 24999.00, 10, '2024-08-01 00:00:00'),
+(9, 'Холодильник Bosch KGN39VL35', 'Холодильник с системой No Frost и размораживанием', 37999.00, 4, '2024-09-01 00:00:00'),
+(10, 'Кофеварка Philips 3000 Series', 'Кофеварка с функцией капучино и регулируемой крепостью', 12999.00, 14, '2024-10-01 00:00:00'),
+(11, 'Видеокамера GoPro HERO11', 'Экшен-камера с 5.3K видео и стабилизацией', 29999.99, 7, '2024-11-01 00:00:00'),
+(12, 'Гейская клавиатура Razer Huntsman Elite', 'Механическая клавиатура с RGB подсветкой', 16999.00, 18, '2024-12-01 00:00:00'),
+(13, 'Смартфон Xiaomi Mi 13', 'Смартфон с экраном 6.36 дюйма и процессором Snapdragon 8', 42999.00, 13, '2024-01-15 00:00:00'),
+(14, 'Электрический самокат Kugoo M4 Pro', 'Самокат с мощным двигателем и большими колесами', 44999.00, 9, '2024-02-15 00:00:00'),
+(15, 'Метеостанция Netatmo', 'Интеллектуальная метеостанция с подключением к приложению', 12999.00, 3, '2024-03-15 00:00:00'),
+(16, 'Шлем для виртуальной реальности Oculus Quest 2', 'Шлем с поддержкой VR и автономной работой', 25999.00, 8, '2024-04-15 00:00:00'),
+(17, 'Смарт-колонка Apple HomePod Mini', 'Мини-версия умной колонки с поддержкой Siri', 8999.00, 11, '2024-05-15 00:00:00'),
+(18, 'Фитнес-браслет Xiaomi Mi Band 7', 'Браслет с мониторингом активности и сердечного ритма', 2999.00, 30, '2024-06-15 00:00:00'),
+(19, 'Блендер Philips HR3652', 'Мощный блендер с функцией измельчения и защиты от перегрева', 7999.00, 17, '2024-07-15 00:00:00'),
+(20, 'Машина для стрижки волос Philips QC5580', 'Машинка для стрижки с несколькими насадками', 2499.00, 25, '2024-08-15 00:00:00');
+
+INSERT INTO project.goods (seller_id, name, description, price, amount, rating, valid_from_dttm, valid_to_dttm) VALUES
+(1, 'Камера Canon EOS 90D', 'Цифровая зеркальная камера с 32.5 Мп, 4K видео', 84999.99, 5, 5, '2024-01-10 00:00:00', '2025-01-10 23:59:59'),
+(2, 'Портативная колонка JBL Charge 5', 'Беспроводная колонка с защитой от воды, до 20 часов работы', 13999.00, 15, 4, '2024-02-01 00:00:00', '2025-02-01 23:59:59'),
+(3, 'Беспроводной пылесос Dyson V11', 'Мощный вертикальный пылесос с функцией автоматического регулирования мощности', 46999.00, 8, 5, '2024-03-01 00:00:00', '2025-03-01 23:59:59'),
+(4, 'Игровая приставка Sony PlayStation 5', 'Следующее поколение консоли с поддержкой 4K, 120 FPS и SSD', 49999.99, 12, 4, '2024-04-01 00:00:00', '2025-04-01 23:59:59'),
+(5, 'Электрический гриль Tefal Optigrill+', 'Гриль с несколькими режимами готовки и автоматической настройкой температуры', 17999.00, 10, 3, '2024-05-01 00:00:00', '2025-05-01 23:59:59'),
+(6, 'Фотоаппарат Fujifilm X-T4', 'Беззеркальная камера с 26.1 Мп, видео 4K', 129999.00, 4, 5, '2024-06-01 00:00:00', '2025-06-01 23:59:59'),
+(7, 'Миксер Bosch MFQ40304', 'Ручной миксер с несколькими насадками, 500 Вт', 3499.00, 18, 5, '2024-07-01 00:00:00', '2025-07-01 23:59:59'),
+(8, 'Электрическая зубная щетка Oral-B Genius', 'Зубная щетка с Bluetooth, несколько режимов чистки', 8999.00, 25, 4, '2024-08-01 00:00:00', '2025-08-01 23:59:59'),
+(9, 'Смарт-термометр Xiaomi Mi Temperature', 'Термометр с подключением к мобильному приложению', 1499.00, 50, 3, '2024-09-01 00:00:00', '2025-09-01 23:59:59'),
+(10, 'Вакуумный упаковщик FoodSaver', 'Устройство для упаковки продуктов в вакуумные пакеты', 7999.00, 20, 5, '2024-10-01 00:00:00', '2025-10-01 23:59:59'),
+(11, 'Радио-работающая колонка Marshall Stanmore', 'Колонка с классическим дизайном и отличным качеством звука', 25999.99, 7, 4, '2024-11-01 00:00:00', '2025-11-01 23:59:59'),
+(12, 'Шлифмашина Makita BO3710', 'Шлифмашина с пылеудалением и регулировкой скорости', 5999.00, 30, 3, '2024-12-01 00:00:00', '2025-12-01 23:59:59'),
+(13, 'Проектор Anker Nebula Capsule', 'Портативный проектор с разрешением 720p и встроенным аккумулятором', 17999.00, 6, 5, '2024-01-15 00:00:00', '2025-01-15 23:59:59'),
+(14, 'Набор инструментов DeWalt DCK2110M2', 'Профессиональный набор инструментов для работы с деревом и металлом', 24999.00, 9, 4, '2024-02-15 00:00:00', '2025-02-15 23:59:59'),
+(15, 'Гриль-барбекю Weber Spirit II E-210', 'Газовый гриль с двумя горелками, встроенный термометр', 34999.00, 5, 5, '2024-03-15 00:00:00', '2025-03-15 23:59:59'),
+(16, 'Автономный генератор Hyundai HHY 3000', 'Генератор с мощностью 3 кВт, 2 розетки', 24999.00, 8, 2, '2024-04-15 00:00:00', '2025-04-15 23:59:59'),
+(17, 'Лодочный мотор Mercury 9.9 HP', 'Мотор для малых лодок с надежной системой охлаждения', 79999.00, 3, 4, '2024-05-15 00:00:00', '2025-05-15 23:59:59'),
+(18, 'Фен Dyson Supersonic', 'Профессиональный фен с инновационным двигателем и защита от перегрева', 24999.00, 20, 5, '2024-06-15 00:00:00', '2025-06-15 23:59:59'),
+(19, 'Умный термостат Nest Learning Thermostat', 'Умный термостат с возможностью управления через приложение', 19999.00, 15, 5, '2024-07-15 00:00:00', '2025-07-15 23:59:59'),
+(20, 'Кофемашина Nespresso Expert', 'Кофемашина с поддержкой функции капучино и удаленным управлением', 21999.00, 10, 4, '2024-08-15 00:00:00', '2025-08-15 23:59:59');
+
+
 INSERT INTO project.orders (client_id, point_id, good_name, price) 
 SELECT client_id, point_id, 'Камера Canon EOS 90D', 84999.99
 FROM project.clients, project.points 
@@ -219,76 +290,8 @@ AND project.points.address = 'пр. Мира, д. 45';
 
 
 
-INSERT INTO project.goods (seller_id, name, description, price, amount, valid_from_dttm) VALUES
-(1, 'Смартфон Samsung Galaxy S23', 'Смартфон с экраном 6.1 дюйма, камера 50 Мп', 64999.99, 10, '2024-01-01 00:00:00'),
-(2, 'Ноутбук ASUS ZenBook 14', 'Ноутбук с процессором Intel i7, 16 ГБ оперативной памяти', 85999.00, 5, '2024-02-01 00:00:00'),
-(3, 'Наушники Sony WH-1000XM5', 'Беспроводные наушники с активным шумоподавлением', 24999.50, 20, '2024-03-01 00:00:00'),
-(4, 'Телевизор LG OLED55C1', '55-дюймовый OLED телевизор с разрешением 4K', 159999.00, 8, '2024-04-01 00:00:00'),
-(5, 'Робот-пылесос Xiaomi Mi Robot Vacuum', 'Умный робот-пылесос с поддержкой управления через приложение', 14999.99, 12, '2024-05-01 00:00:00'),
-(6, 'Микроволновая печь Samsung MS23K3513AS', 'Микроволновка с инверторным нагревом и 23 литра объема', 8999.00, 15, '2024-06-01 00:00:00'),
-(7, 'Планшет Apple iPad Pro 11', 'Планшет с процессором M1 и экраном 11 дюймов', 79999.00, 6, '2024-07-01 00:00:00'),
-(8, 'Смарт-часы Garmin Forerunner 945', 'Часы с GPS, мониторингом здоровья и спорта', 24999.00, 10, '2024-08-01 00:00:00'),
-(9, 'Холодильник Bosch KGN39VL35', 'Холодильник с системой No Frost и размораживанием', 37999.00, 4, '2024-09-01 00:00:00'),
-(10, 'Кофеварка Philips 3000 Series', 'Кофеварка с функцией капучино и регулируемой крепостью', 12999.00, 14, '2024-10-01 00:00:00'),
-(11, 'Видеокамера GoPro HERO11', 'Экшен-камера с 5.3K видео и стабилизацией', 29999.99, 7, '2024-11-01 00:00:00'),
-(12, 'Гейская клавиатура Razer Huntsman Elite', 'Механическая клавиатура с RGB подсветкой', 16999.00, 18, '2024-12-01 00:00:00'),
-(13, 'Смартфон Xiaomi Mi 13', 'Смартфон с экраном 6.36 дюйма и процессором Snapdragon 8', 42999.00, 13, '2024-01-15 00:00:00'),
-(14, 'Электрический самокат Kugoo M4 Pro', 'Самокат с мощным двигателем и большими колесами', 44999.00, 9, '2024-02-15 00:00:00'),
-(15, 'Метеостанция Netatmo', 'Интеллектуальная метеостанция с подключением к приложению', 12999.00, 3, '2024-03-15 00:00:00'),
-(16, 'Шлем для виртуальной реальности Oculus Quest 2', 'Шлем с поддержкой VR и автономной работой', 25999.00, 8, '2024-04-15 00:00:00'),
-(17, 'Смарт-колонка Apple HomePod Mini', 'Мини-версия умной колонки с поддержкой Siri', 8999.00, 11, '2024-05-15 00:00:00'),
-(18, 'Фитнес-браслет Xiaomi Mi Band 7', 'Браслет с мониторингом активности и сердечного ритма', 2999.00, 30, '2024-06-15 00:00:00'),
-(19, 'Блендер Philips HR3652', 'Мощный блендер с функцией измельчения и защиты от перегрева', 7999.00, 17, '2024-07-15 00:00:00'),
-(20, 'Машина для стрижки волос Philips QC5580', 'Машинка для стрижки с несколькими насадками', 2499.00, 25, '2024-08-15 00:00:00');
-
-INSERT INTO project.goods (seller_id, name, description, price, amount, rating, valid_from_dttm, valid_to_dttm) VALUES
-(1, 'Камера Canon EOS 90D', 'Цифровая зеркальная камера с 32.5 Мп, 4K видео', 84999.99, 5, 5, '2024-01-10 00:00:00', '2025-01-10 23:59:59'),
-(2, 'Портативная колонка JBL Charge 5', 'Беспроводная колонка с защитой от воды, до 20 часов работы', 13999.00, 15, 4, '2024-02-01 00:00:00', '2025-02-01 23:59:59'),
-(3, 'Беспроводной пылесос Dyson V11', 'Мощный вертикальный пылесос с функцией автоматического регулирования мощности', 46999.00, 8, 5, '2024-03-01 00:00:00', '2025-03-01 23:59:59'),
-(4, 'Игровая приставка Sony PlayStation 5', 'Следующее поколение консоли с поддержкой 4K, 120 FPS и SSD', 49999.99, 12, 4, '2024-04-01 00:00:00', '2025-04-01 23:59:59'),
-(5, 'Электрический гриль Tefal Optigrill+', 'Гриль с несколькими режимами готовки и автоматической настройкой температуры', 17999.00, 10, 3, '2024-05-01 00:00:00', '2025-05-01 23:59:59'),
-(6, 'Фотоаппарат Fujifilm X-T4', 'Беззеркальная камера с 26.1 Мп, видео 4K', 129999.00, 4, 5, '2024-06-01 00:00:00', '2025-06-01 23:59:59'),
-(7, 'Миксер Bosch MFQ40304', 'Ручной миксер с несколькими насадками, 500 Вт', 3499.00, 18, 5, '2024-07-01 00:00:00', '2025-07-01 23:59:59'),
-(8, 'Электрическая зубная щетка Oral-B Genius', 'Зубная щетка с Bluetooth, несколько режимов чистки', 8999.00, 25, 4, '2024-08-01 00:00:00', '2025-08-01 23:59:59'),
-(9, 'Смарт-термометр Xiaomi Mi Temperature', 'Термометр с подключением к мобильному приложению', 1499.00, 50, 3, '2024-09-01 00:00:00', '2025-09-01 23:59:59'),
-(10, 'Вакуумный упаковщик FoodSaver', 'Устройство для упаковки продуктов в вакуумные пакеты', 7999.00, 20, 5, '2024-10-01 00:00:00', '2025-10-01 23:59:59'),
-(11, 'Радио-работающая колонка Marshall Stanmore', 'Колонка с классическим дизайном и отличным качеством звука', 25999.99, 7, 4, '2024-11-01 00:00:00', '2025-11-01 23:59:59'),
-(12, 'Шлифмашина Makita BO3710', 'Шлифмашина с пылеудалением и регулировкой скорости', 5999.00, 30, 3, '2024-12-01 00:00:00', '2025-12-01 23:59:59'),
-(13, 'Проектор Anker Nebula Capsule', 'Портативный проектор с разрешением 720p и встроенным аккумулятором', 17999.00, 6, 5, '2024-01-15 00:00:00', '2025-01-15 23:59:59'),
-(14, 'Набор инструментов DeWalt DCK2110M2', 'Профессиональный набор инструментов для работы с деревом и металлом', 24999.00, 9, 4, '2024-02-15 00:00:00', '2025-02-15 23:59:59'),
-(15, 'Гриль-барбекю Weber Spirit II E-210', 'Газовый гриль с двумя горелками, встроенный термометр', 34999.00, 5, 5, '2024-03-15 00:00:00', '2025-03-15 23:59:59'),
-(16, 'Автономный генератор Hyundai HHY 3000', 'Генератор с мощностью 3 кВт, 2 розетки', 24999.00, 8, 2, '2024-04-15 00:00:00', '2025-04-15 23:59:59'),
-(17, 'Лодочный мотор Mercury 9.9 HP', 'Мотор для малых лодок с надежной системой охлаждения', 79999.00, 3, 4, '2024-05-15 00:00:00', '2025-05-15 23:59:59'),
-(18, 'Фен Dyson Supersonic', 'Профессиональный фен с инновационным двигателем и защита от перегрева', 24999.00, 20, 5, '2024-06-15 00:00:00', '2025-06-15 23:59:59'),
-(19, 'Умный термостат Nest Learning Thermostat', 'Умный термостат с возможностью управления через приложение', 19999.00, 15, 5, '2024-07-15 00:00:00', '2025-07-15 23:59:59'),
-(20, 'Кофемашина Nespresso Expert', 'Кофемашина с поддержкой функции капучино и удаленным управлением', 21999.00, 10, 4, '2024-08-15 00:00:00', '2025-08-15 23:59:59');
 
 
-INSERT INTO project.clients (first_name, last_name, phone_number, password) VALUES
-('Иван', 'Петров', '8905123456', crypt('1234abcd5678ef90', gen_salt('bf'))::bytea),
-('Мария', 'Иванова', '8916123456', crypt('xa1b2c3d4e5f67890', gen_salt('bf'))::bytea),
-('Прилипп', 'Подождет', '8956123456', crypt('1011121314151617', gen_salt('bf'))::bytea),
-('Алексей', 'Смирнов', '8926123456', crypt('4567bcde89f01234', gen_salt('bf'))::bytea),
-('Екатерина', 'Кузнецова', '8936123456', crypt('ffee112233445566', gen_salt('bf'))::bytea),
-('Артем', 'Афафаф', '8956123456', crypt('1011121314151617', gen_salt('bf'))::bytea),
-('Дмитрий', 'Михайлов', '8946123456', crypt('9a8b7c6d5e4f3d21', gen_salt('bf'))::bytea),
-('Игрь', 'Берцов', '8956123456', crypt('1011121314151617', gen_salt('bf'))::bytea),
-('Юрий', 'Попов', '8966123456', crypt('20a1b2c3d4e5f678', gen_salt('bf'))::bytea),
-('Андрей', 'Чернов', '8976123456', crypt('11c9d8e7f6b50431', gen_salt('bf'))::bytea),
-('Наталья', 'Морозова', '8986123456', crypt('93b4a7c8d9f01124', gen_salt('bf'))::bytea),
-('Ольга', 'Соколова', '8956123456', crypt('1011121314151617', gen_salt('bf'))::bytea),
-('Сергей', 'Фролов', '8996123456', crypt('6768e1a2b3c4d5e6', gen_salt('bf'))::bytea),
-('Виктория', 'Николаева', '8906223456', crypt('9abcf6de0d415e70', gen_salt('bf'))::bytea),
-('Егор', 'Романов', '8916223456', crypt('abcd1234def56789', gen_salt('bf'))::bytea),
-('Анастасия', 'Васильева', '8926223456', crypt('13457890ab9c0de1', gen_salt('bf'))::bytea),
-('Ольга', 'Зайка', '8956123456', crypt('1011121314151617', gen_salt('bf'))::bytea),
-('Максим', 'Лебедев', '8936223456', crypt('23456789abcd1234', gen_salt('bf'))::bytea),
-('Владимир', 'Григорьев', '8946223456', crypt('90a1b2c3d4e5f678', gen_salt('bf'))::bytea),
-('Марина', 'Калинина', '8956223456', crypt('77ff112233445566', gen_salt('bf'))::bytea),
-('Константин', 'Жуков', '8966223456', crypt('223344aabbee9900', gen_salt('bf'))::bytea),
-('Далин', 'Долгий', '8956123456', crypt('1011121314151617', gen_salt('bf'))::bytea),
-('София', 'Козлова', '8976223456', crypt('55aabbccddeeff00', gen_salt('bf'))::bytea),
-('Артем', 'Орлов', '8986223456', crypt('1112131415f67890', gen_salt('bf'))::bytea);
 
 
 INSERT INTO project.employees (first_name, last_name, age, phone_number, position, salary)
@@ -331,12 +334,12 @@ VALUES
 
 INSERT INTO project.points_employees (point_id, employee_id)
 VALUES
-((SELECT point_id FROM project.points WHERE address = 'ул. Лермонтова, д. 3'),
+((SELECT point_id FROM project.points WHERE address = 'ул. Загородная, д. 9'),
  (SELECT employee_id FROM project.employees WHERE first_name = 'Елена' AND last_name = 'Вылетитнепоймаешь'));
 
 INSERT INTO project.points_employees (point_id, employee_id)
 VALUES
-((SELECT point_id FROM project.points WHERE address = 'ул. Лермонтова, д. 3'),
+((SELECT point_id FROM project.points WHERE address = 'ул. Загородная, д. 9'),
  (SELECT employee_id FROM project.employees WHERE first_name = 'Николай' AND last_name = 'Табасков'));
 
 INSERT INTO project.points_employees (point_id, employee_id)
@@ -354,7 +357,6 @@ VALUES
 ((SELECT point_id FROM project.points WHERE address = 'пр. Мира, д. 45'),
  (SELECT employee_id FROM project.employees WHERE first_name = 'Александр' AND last_name = 'Неуловимов'));
 
--- Пункт с четырьмя сотрудниками
 INSERT INTO project.points_employees (point_id, employee_id)
 VALUES
 ((SELECT point_id FROM project.points WHERE address = 'ул. Октябрьская, д. 12'),
@@ -412,3 +414,123 @@ VALUES
 
 
 
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Камера Canon EOS 90D';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Портативная колонка JBL Charge 5';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Игровая приставка Sony PlayStation 5';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Беспроводной пылесос Dyson V11';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Фотоаппарат Fujifilm X-T4';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Миксер Bosch MFQ40304';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Электрическая зубная щетка Oral-B Genius 9000';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Смарт-термометр Xiaomi Mi Temperature and Humidity Sensor';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Вакуумный упаковщик FoodSaver';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Радио-работающая колонка Marshall Stanmore II';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Шлифмашина Makita BO3710';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Проектор Anker Nebula Capsule';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Набор инструментов DeWalt DCK2110M2';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Гриль-барбекю Weber Spirit II E-210';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Автономный генератор Hyundai HHY 3000';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Лодочный мотор Mercury 9.9 HP';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Фен Dyson Supersonic';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Умный термостат Nest Learning Thermostat';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Кофемашина Nespresso Expert';
+
+INSERT INTO project.orders_goods (order_id, good_id, good_name)
+SELECT o.order_id, g.good_id, g.name
+FROM project.orders o
+JOIN project.goods g ON o.good_name = g.name
+WHERE o.good_name = 'Беспроводные наушники Apple AirPods Pro';

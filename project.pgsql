@@ -68,7 +68,7 @@ CREATE TABLE if not exists project.orders (
     client_id INTEGER NOT NULL,
     point_id INTEGER NOT NULL,
     order_id SERIAL,
-    good_name varchar(50) NOT NULL,
+    good_name varchar(60) NOT NULL,
     price decimal(12, 2) NOT NULL CHECK (price > 0),
     valid_from_dttm TIMESTAMP,
     valid_to_dttm TIMESTAMP,

@@ -1,5 +1,7 @@
-from sqlalchemy import create_engine, MetaData
+from sqlalchemy import create_engine, MetaData, func
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy import select
+from sqlalchemy import func
 from datetime import datetime
 
 DATABASE_URL = "postgresql+psycopg2://berdov:closeyourlaptop@localhost:5432/berdov"
@@ -15,17 +17,18 @@ except Exception as e:
 metadata = MetaData(schema="project")
 metadata.reflect(bind=engine)
 
-sellers = metadata.tables['project.sellers']
-goods = metadata.tables['project.goods']
-clients = metadata.tables['project.clients']
-orders = metadata.tables['project.orders']
-points = metadata.tables['project.points']
-employees = metadata.tables['project.employees']
+sellers = metadata.tables["project.sellers"]
+goods = metadata.tables["project.goods"]
+clients = metadata.tables["project.clients"]
+orders = metadata.tables["project.orders"]
+points = metadata.tables["project.points"]
+employees = metadata.tables["project.employees"]
 
 Session = sessionmaker(bind=engine)
 session = Session()
 
 with engine.connect() as conn:
+
     new_seller = {
         "name": "Олег Пахроменко",
         "phone_number": "9876543210",
@@ -75,28 +78,50 @@ with engine.connect() as conn:
     conn.execute(employees.insert(), [new_employee])
     print("Добавлен сотрудник")
 
-    sellers_result = conn.execute(sellers.select()).fetchall()
-    print("Продавцы:", sellers_result)
 
-    goods_result = conn.execute(goods.select()).fetchall()
-    print("Товары:", goods_result)
+    print("\nА кто у нас царица валдбериз:")
+    top_clients_query = (
+        session.query(
+            clients.c.first_name,
+            clients.c.last_name,
+            func.count(orders.c.order_id).label("order_count"),
+        )
+        .join(orders, clients.c.client_id == orders.c.client_id)
+        .group_by(clients.c.client_id)
+        .order_by(func.count(orders.c.order_id).desc())
+        .limit(10)
+    )
+    for client in top_clients_query:
+        print(client)
 
-    clients_result = conn.execute(clients.select()).fetchall()
-    print("Клиенты:", clients_result)
-
-    points_result = conn.execute(points.select()).fetchall()
-    print("Точки продаж:", points_result)
-
-    employees_result = conn.execute(employees.select()).fetchall()
-    print("Сотрудники:", employees_result)
-
-    conn.execute(goods.update().where(goods.c.name == "Чайник для заваривания пельменей").values(price=200.75))
+    print("\nСредняя цена товаров у каждого продавца:")
+    avg_goods_price_query = (
+        session.query(
+            sellers.c.name.label("seller_name"),
+            func.avg(goods.c.price).label("average_price"),
+        )
+        .join(goods, sellers.c.seller_id == goods.c.seller_id)
+        .group_by(sellers.c.seller_id)
+        .order_by(func.avg(goods.c.price).desc())
+    )
+    for seller in avg_goods_price_query:
+        print(seller)
+    
+    conn.execute(
+        goods.update()
+        .where(goods.c.name == "Чайник для заваривания пельменей")
+        .values(price=200.75)
+    )
     print("Цена товара обновлена")
 
-    conn.execute(sellers.update().where(sellers.c.name == "Олег Пахроменко").values(rating=5))
+    conn.execute(
+        sellers.update().where(sellers.c.name == "Олег Пахроменко").values(rating=5)
+    )
     print("Рейтинг продавца обновлен")
 
-    conn.execute(goods.delete().where(goods.c.name == "Чайник для заваривания пельменей"))
+    conn.execute(
+        goods.delete().where(goods.c.name == "Чайник для заваривания пельменей")
+    )
     print("Товар удален")
 
     conn.execute(sellers.delete().where(sellers.c.name == "Олег Пахроменко"))
@@ -105,7 +130,11 @@ with engine.connect() as conn:
     conn.execute(clients.delete().where(clients.c.first_name == "Роксана"))
     print("Клиент удален")
 
-    conn.execute(points.delete().where(points.c.address == "г Санкт-Петербург ул Кантемировская д 3"))
+    conn.execute(
+        points.delete().where(
+            points.c.address == "г Санкт-Петербург ул Кантемировская д 3"
+        )
+    )
     print("Точка продаж удалена")
 
     conn.execute(employees.delete().where(employees.c.first_name == "Зульфия"))

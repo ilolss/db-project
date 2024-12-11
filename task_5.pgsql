@@ -1,22 +1,22 @@
--- CRUD-запросы к таблице "Клиент"
+-- CRUD-запросы к таблице "Клиенты"
 
 -- Добавление нового клиента
 insert into project.clients (first_name, last_name, phone_number, password)
-values ('Иван', 'Иванов', '9551234567', 'пароль6');
+values ('Иван', 'Иванов', '8907773535', 'пароль6');
 
 -- Получение списка клиентов по номеру телефона
-select client_id, first_name, last_name, password
+select client_id, first_name, last_name
 from project.clients
-where phone_number = '9551234567';
+where phone_number = '8907773535' and password = 'пароль6';
 
 -- Обновление номера телефона клиента
 update project.clients
-set phone_number = '9669876543'
-where client_id = 6;
+set phone_number = '8907773737'
+where client_id = 26 and password = 'пароль6';
 
 -- Удаление клиента по ID
 delete from project.clients
-where client_id = 6;
+where client_id = 26 and password = 'пароль6';
 
 -- CRUD-запросы к таблице "Товары"
 
@@ -32,7 +32,7 @@ where price > 10000;
 -- Изменение количества товара в наличии
 update project.goods
 set amount = 5
-where good_id = 6;
+where good_id = 41;
 
 -- Удаление товара с истёкшим сроком актуальности
 delete from project.goods

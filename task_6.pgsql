@@ -1,4 +1,4 @@
--- Вывести продавцов, у которых средний рейтинг их товаров ниже 3.
+-- Вывести продавцов, у которых средний рейтинг их товаров выше 3.
 
 select 
     s.seller_id,
@@ -11,7 +11,7 @@ join
 group by 
     s.seller_id, s.name
 having 
-    avg(g.rating) < 3;
+    avg(g.rating) > 3;
 
 
 -- Вывести список клиентов, заказавших товары на общую сумму более 15,000, отсортированный по убыванию суммы заказов.
@@ -34,23 +34,32 @@ order by
 
 
 -- Вывести самые дорогие товары каждого продавца.
-
-select 
-	rp.seller_id,
+   
+select
+	s.seller_id,
 	rp.name,
 	rp.price,
 	rp.price_rank
-from (
+from 
+	project.sellers s 
+left join (
 	select 
-	    g.seller_id as seller_id,
-	    g.name as name,
-	    g.price as price,
-	    rank() over (partition by g.seller_id order by g.price desc) as price_rank
-	from 
-	    project.goods g
-) rp
-where 
-    rp.price_rank = 1;
+		rp.seller_id,
+		rp.name,
+		rp.price,
+		rp.price_rank
+	from (
+		select 
+		    g.seller_id as seller_id,
+		    g.name as name,
+		    g.price as price,
+		    rank() over (partition by g.seller_id order by g.price desc) as price_rank
+		from 
+		    project.goods g
+	) rp
+	where 
+	    rp.price_rank = 1
+) rp on s.seller_id = rp.seller_id;
 
 -- Вывести ПВЗ с рейтингом выше среднего по всем ПВЗ, отсортировать по рейтингу.
 

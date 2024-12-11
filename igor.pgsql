@@ -144,11 +144,11 @@ INSERT INTO project.goods (seller_id, name, description, price, amount, rating, 
 ((SELECT seller_id FROM project.sellers WHERE phone_number = '9034567891'), 'Проектор Anker Nebula Capsule', 'Портативный проектор с разрешением 720p и встроенным аккумулятором', 17999.00, 6, 5, '2024-01-15 00:00:00', '2025-01-15 23:59:59'),
 ((SELECT seller_id FROM project.sellers WHERE phone_number = '9035678902'), 'Набор инструментов DeWalt DCK2110M2', 'Профессиональный набор инструментов для работы с деревом и металлом', 24999.00, 9, 4, '2024-02-15 00:00:00', '2025-02-15 23:59:59'),
 ((SELECT seller_id FROM project.sellers WHERE phone_number = '9036789013'), 'Гриль-барбекю Weber Spirit II E-210', 'Газовый гриль с двумя горелками, встроенный термометр', 34999.00, 5, 5, '2024-03-15 00:00:00', '2025-03-15 23:59:59'),
-((SELECT seller_id FROM project.sellers WHERE phone_number = '9037890124'), 'Автономный генератор Hyundai HHY 3000', 'Генератор с мощностью 3 кВт, 2 розетки', 24999.00, 8, 2, '2024-04-15 00:00:00', '2025-04-15 23:59:59'),
-((SELECT seller_id FROM project.sellers WHERE phone_number = '9038901235'), 'Лодочный мотор Mercury 9.9 HP', 'Мотор для малых лодок с надежной системой охлаждения', 79999.00, 3, 4, '2024-05-15 00:00:00', '2025-05-15 23:59:59'),
-((SELECT seller_id FROM project.sellers WHERE phone_number = '9039923456'), 'Фен Dyson Supersonic', 'Профессиональный фен с инновационным двигателем и защита от перегрева', 24999.00, 20, 5, '2024-06-15 00:00:00', '2025-06-15 23:59:59'),
-((SELECT seller_id FROM project.sellers WHERE phone_number = '9031234568'), 'Умный термостат Nest Learning Thermostat', 'Умный термостат с возможностью управления через приложение', 19999.00, 15, 5, '2024-07-15 00:00:00', '2025-07-15 23:59:59'),
-((SELECT seller_id FROM project.sellers WHERE phone_number = '9032345679'), 'Кофемашина Nespresso Expert', 'Кофемашина с поддержкой функции капучино и удаленным управлением', 21999.00, 10, 4, '2024-08-15 00:00:00', '2025-08-15 23:59:59');
+((SELECT seller_id FROM project.sellers WHERE phone_number = '9037890124'), 'Автономный генератор Hyundai HHY 3000', 'Генератор с мощностью 3 кВт, 2 розетки', 24999.00, 8, 2, '2024-04-15 00:00:00', '2024-05-15 23:59:59'),
+((SELECT seller_id FROM project.sellers WHERE phone_number = '9038901235'), 'Лодочный мотор Mercury 9.9 HP', 'Мотор для малых лодок с надежной системой охлаждения', 79999.00, 3, 4, '2024-05-15 00:00:00', '2024-06-15 23:59:59'),
+((SELECT seller_id FROM project.sellers WHERE phone_number = '9039923456'), 'Фен Dyson Supersonic', 'Профессиональный фен с инновационным двигателем и защита от перегрева', 24999.00, 20, 5, '2024-06-15 00:00:00', '2024-07-15 23:59:59'),
+((SELECT seller_id FROM project.sellers WHERE phone_number = '9031234568'), 'Умный термостат Nest Learning Thermostat', 'Умный термостат с возможностью управления через приложение', 19999.00, 15, 5, '2024-07-15 00:00:00', '2024-08-15 23:59:59'),
+((SELECT seller_id FROM project.sellers WHERE phone_number = '9032345679'), 'Кофемашина Nespresso Expert', 'Кофемашина с поддержкой функции капучино и удаленным управлением', 21999.00, 10, 4, '2024-08-15 00:00:00', '2024-09-15 23:59:59');
 
 
 INSERT INTO project.orders (client_id, point_id, good_name, price) 

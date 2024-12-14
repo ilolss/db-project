@@ -6,7 +6,7 @@
 - Пожидаев Филипп
 
 ## Комментарии по задачам
-##### Задание 1, 2
+#### Задание 1, 2
 [Draw.io](https://drive.google.com/file/d/1c1dXtHTS_CsiPY7Cp5EQt0I52vluOhEN/view?usp=sharing)
 
 #### Задание 3

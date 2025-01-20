@@ -1,11 +1,11 @@
 # Маркетплейс
 ## Команда проекта
 - Афоничев Артемий ([Win4ap](https://github.com/Win4ap))
-- 
+
 - Бердов Игорь ([berdov](https://github.com/berdov))
-- 
+
 - Долгих Даниил ([GFGH](https://github.com/1gfgh))
-- 
+
 - Пожидаев Филипп ([ilolss](https://github.com/ilolss))
 
 ## Описание проекта
